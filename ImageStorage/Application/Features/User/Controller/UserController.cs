@@ -21,7 +21,14 @@ namespace ImageStorage.Application.Features.Image.Controller
         {
             var result = await _mediator.Send(cmd);
 
-            
+            if(result == "COMPLETED")
+            {
+                return Ok(new { Message = "User registered successfully." });
+            }
+            else
+            {
+                return BadRequest(result);
+            }
         }
     }
 }
