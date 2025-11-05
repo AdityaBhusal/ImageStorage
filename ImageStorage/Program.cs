@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<UserContext>
     (options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("UserDatabase")));
+        options.UseSqlite(builder.Configuration.GetConnectionString("UserDatabase")));
 
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(
