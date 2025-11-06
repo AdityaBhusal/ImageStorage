@@ -1,9 +1,11 @@
-﻿using ImageStorage.Domain.Entity;
+﻿using ImageStorage.Application.Features.Image.Command;
+using ImageStorage.Domain.Entity;
 using ImageStorage.Infrastructure.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace ImageStorage.Application.Features.Image.Command
+
+namespace ImageStorage.Application.Features.User.Command
 {
     public class RegisterUserCommandHandler(UserContext context) : IRequestHandler<RegisterUserCommand, string>
     {
@@ -36,7 +38,7 @@ namespace ImageStorage.Application.Features.Image.Command
             { return "User with this email already exists."; }
             else
             {
-                result = new User
+                result = new UserEntity
                 {
                     UserPP = request.Dto.UserPP,
                     Name = request.Dto.Name,
@@ -44,6 +46,7 @@ namespace ImageStorage.Application.Features.Image.Command
                     CreatedTime = request.Dto.UploadTime
                 };
             await _context.Users.AddAsync(result);
+                await _context.SaveChangesAsync();
                 return "COMPLETED";
 
             }

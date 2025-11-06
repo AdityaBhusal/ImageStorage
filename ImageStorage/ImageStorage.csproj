@@ -25,7 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Features\User\Query\" />
     <Folder Include="Data\" />
   </ItemGroup>
 

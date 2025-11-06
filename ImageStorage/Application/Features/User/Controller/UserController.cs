@@ -1,4 +1,5 @@
 ﻿using ImageStorage.Application.Features.Image.Command;
+using ImageStorage.Application.Features.User.Query;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +17,7 @@ namespace ImageStorage.Application.Features.Image.Controller
             _mediator = mediator;
         }
 
+        //post the image 
         [HttpPost("upload")]
         public async Task<IActionResult> UploadImage([FromBody] RegisterUserCommand cmd)
         {
@@ -29,6 +31,20 @@ namespace ImageStorage.Application.Features.Image.Controller
             {
                 return BadRequest(result);
             }
+        }
+
+
+        // get all users
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var users = await _mediator.Send(new GetAllUsersQuery());
+
+            if(users == null || !users.Any())
+            {
+                return NotFound("No users found.");
+            }
+            return Ok(users);
         }
     }
 }

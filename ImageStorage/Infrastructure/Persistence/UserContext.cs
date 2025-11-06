@@ -8,6 +8,6 @@ namespace ImageStorage.Infrastructure.Persistence
         public UserContext(DbContextOptions<UserContext> options) : base (options)
         {
         }
-        public DbSet<User> Users => Set<User>();
+        public DbSet<UserEntity> Users => Set<UserEntity>();
     }
 }

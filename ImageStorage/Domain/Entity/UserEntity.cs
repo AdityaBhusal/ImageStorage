@@ -1,8 +1,8 @@
 ﻿namespace ImageStorage.Domain.Entity
 {
-    public class User
+    public class UserEntity
     {
-        public Guid UserId { get; set; }
+        public Guid Id { get; set; }
         public Uri UserPP { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
