@@ -13,37 +13,37 @@ namespace ImageStorage.Application.Features.User.Command
 
         public async Task<string> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
-            if(request.Dto.UserPP == null)
+            if(request.UserPP == null)
             {
                 return "User Profile Picture is required.";
             }
 
-            if(request.Dto.Name == null)
+            if(request.Name == null)
             {
                 return "User Name is required.";
             }
-            if(request.Dto.Email == null)
+            if(request.Email == null)
             {
                 return "User Email is required.";
             }
             
             // Fix: DateTime is a non-nullable value type, so check for default value instead of null
-            if(request.Dto.UploadTime == default)
+            if(request.UploadTime == default)
             {
                 return "Upload Time is required.";
             }
 
-            var result = await _context.Users.SingleOrDefaultAsync(u => u.Email == request.Dto.Email);
+            var result = await _context.Users.SingleOrDefaultAsync(u => u.Email == request.Email);
             if (result != null)
             { return "User with this email already exists."; }
             else
             {
                 result = new UserEntity
                 {
-                    UserPP = request.Dto.UserPP,
-                    Name = request.Dto.Name,
-                    Email = request.Dto.Email,
-                    CreatedTime = request.Dto.UploadTime
+                    UserPP = request.UserPP,
+                    Name =  request.Name,
+                    Email = request.Email,
+                    CreatedTime = request.UploadTime
                 };
             await _context.Users.AddAsync(result);
                 await _context.SaveChangesAsync();
