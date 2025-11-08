@@ -1,9 +1,10 @@
-﻿using ImageStorage.Infrastructure.Persistence;
+﻿using ImageStorage.Application.Features.User.Query;
+using ImageStorage.Infrastructure.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 
-namespace ImageStorage.Application.Features.User.Query
+namespace ImageStorage.Application.Features.User.QueryHandler
 {
     public class GetUserImageHandler : IRequestHandler<GetUserImageQuery, string>
     {

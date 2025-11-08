@@ -2,8 +2,10 @@
 using ImageStorage.Domain.Entity;
 using ImageStorage.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using ImageStorage.Application.Features.User.Query;
+using ImageStorage.Application.Features.User.Model;
 
-namespace ImageStorage.Application.Features.User.Query
+namespace ImageStorage.Application.Features.User.QueryHandler
 {
     public class GetAllUsersHandler : IRequestHandler<GetAllUsersQuery, List<GetUserDto>>
     {

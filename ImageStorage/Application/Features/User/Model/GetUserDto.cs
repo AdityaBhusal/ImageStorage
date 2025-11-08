@@ -1,4 +1,4 @@
-﻿namespace ImageStorage.Application.Features.User.Query
+﻿namespace ImageStorage.Application.Features.User.Model
 {
     public class GetUserDto
     {

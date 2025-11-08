@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using ImageStorage.Application.Features.User.Model;
+using MediatR;
 
 namespace ImageStorage.Application.Features.User.Query
 {

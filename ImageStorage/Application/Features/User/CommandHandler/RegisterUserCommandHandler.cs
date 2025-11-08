@@ -5,7 +5,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace ImageStorage.Application.Features.User.Command
+namespace ImageStorage.Application.Features.User.CommandHandler
 {
     public class RegisterUserCommandHandler(UserContext context) : IRequestHandler<RegisterUserCommand, string>
     {
